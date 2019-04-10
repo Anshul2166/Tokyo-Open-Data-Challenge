@@ -18,7 +18,7 @@
 		border-radius: 5px;
 		transition: all 0.4s ease;
         outline: none; 
-       
+        margin: auto;
 }
 .Title{
     padding: 0.5em;
