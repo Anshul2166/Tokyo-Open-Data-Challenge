@@ -30,7 +30,7 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 label{
-    font-size: 1.5em;
+    font-size: 1em;
     padding: 2%;
     margin: 1%;
 }
@@ -49,3 +49,6 @@ button:active{
     background: #10A881;
 }
 
+div{
+    text-align: center;
+}

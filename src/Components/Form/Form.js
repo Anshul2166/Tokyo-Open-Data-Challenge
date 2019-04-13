@@ -29,7 +29,7 @@ class Form extends Component {
         <h1 className="Head"> Tokyo Open Data Challenge</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="Outer">
-            <h1 className="Title">Enter Tour Details</h1>
+            <h3 className="Title">Enter Tour Details</h3>
             <div>
               <label>Locations to visit</label>
               <input
