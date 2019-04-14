@@ -3,7 +3,7 @@ import "./Form.css";
 
 class Form extends Component {
   state = {
-    locations: "",
+    locations: [],
     daysOfTravel: ""
   };
 
@@ -23,7 +23,7 @@ class Form extends Component {
   };
 
   render() {
-    const { locations, daysOfTravel } = this.state;
+    const { location, daysOfTravel } = this.state;
     return (
       <div>
         <h1 className="Head"> Tokyo Open Data Challenge</h1>
@@ -32,13 +32,20 @@ class Form extends Component {
             <h3 className="Title">Enter Tour Details</h3>
             <div>
               <label>Locations to visit</label>
-              <input
-                type="text"
-                placeholder="Name of Locations"
+
+              {locations.map((location, index)=>{
+                  return(
+                    <div key={index}>
+
+                    </div>
+                  )
+                })
+
+              <input placeholder="Name of Locations"
                 value={locations}
                 onChange={this.handleLocations}
-                multiple
               />
+              }
             </div>
             <div>
               <label>Days of Travel </label>
