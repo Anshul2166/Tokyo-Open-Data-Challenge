@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Login from "./Login/Login";
 import "./Users.css";
 import Signup from "./Signup/Signup";
@@ -39,9 +38,7 @@ class User extends Component {
     const { classes } = this.props;
     return (
       <div className="user">
-        <Grid container spacing={24} className="user center-box">
           <Signup classes={classes} />
-        </Grid>
       </div>
     );
   }

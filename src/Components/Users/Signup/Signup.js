@@ -80,7 +80,7 @@ const SocialNetworkLogIn = props => (
       <FacebookIcon />
       Signup with facebook
     </Button>
-    <Link to="/api/users/auth/google">
+    <a href="api/users/auth/google">
       <Button
         variant="contained"
         color="primary"
@@ -89,7 +89,7 @@ const SocialNetworkLogIn = props => (
         <GoogleIcon />
         Signup with google
       </Button>
-    </Link>
+    </a>
   </div>
 );
 

@@ -21,10 +21,11 @@ module.exports = function(passport) {
             return done(null, user);
           }
           const newUser = new User();
+          console.log(profile);
           newUser.google = profile.id;
           newUser.local.username = profile.displayName;
           newUser.local.email = profile.emails[0].value;
-          newUser.userImage = profile._json.image.url;
+          newUser.userImage = profile._json.picture;
           const savedUser = await newUser.save();
           done(null, savedUser);
         } catch (err) {
