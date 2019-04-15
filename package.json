@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.3",
@@ -14,6 +16,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
     "file-loader": "^3.0.1",
+    "mdi-react": "^5.3.0",
     "moment": "^2.24.0",
     "mongoose": "^5.5.0",
     "morgan": "^1.9.1",
@@ -25,6 +28,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
