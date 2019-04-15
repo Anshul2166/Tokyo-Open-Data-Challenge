@@ -22,8 +22,13 @@ class Form extends Component {
     event.preventDefault();
   };
 
+  addLocation = event =>{
+    this.setState({
+      locations:[...this.state.locations,'']
+    })
+  }
   render() {
-    const { location, daysOfTravel } = this.state;
+    const { locations, daysOfTravel } = this.state;
     return (
       <div>
         <h1 className="Head"> Tokyo Open Data Challenge</h1>
@@ -33,19 +38,17 @@ class Form extends Component {
             <div>
               <label>Locations to visit</label>
 
-              {locations.map((location, index)=>{
-                  return(
-                    <div key={index}>
-
-                    </div>
-                  )
-                })
-
-              <input placeholder="Name of Locations"
-                value={locations}
-                onChange={this.handleLocations}
-              />
-              }
+              {locations.map((location, index) => {
+                return (
+                  <div key={index}>
+                    <input 
+                    // eslint-disable-next-line no-restricted-globals
+                    type="number" placeholder='Enter location' value={location} onChange={this.addLocation} />
+                  </div>
+                );
+              })}
+                <hr></hr>
+              <button onClick={event => this.addLocation}>Add Location</button>
             </div>
             <div>
               <label>Days of Travel </label>
