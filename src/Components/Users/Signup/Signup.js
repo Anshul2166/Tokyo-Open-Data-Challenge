@@ -5,7 +5,9 @@ import { FormGroup, FormControl } from "@material-ui/core";
 import FacebookIcon from "mdi-react/FacebookIcon";
 import GoogleIcon from "mdi-react/GoogleIcon";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import * as userActions from "../../../actions/userActions";
 
 class Signup extends Component {
   render() {
@@ -103,4 +105,16 @@ const Divider = props => (
   </div>
 );
 
-export default Signup;
+const mapStateToProps=state=>{
+	return{
+		users:state.users.users
+	}
+}
+
+const mapActionsToProps = dispatch => {
+  return {
+    userActions: bindActionCreators(userActions, dispatch)
+  };
+};
+
+export default connect(mapStateToProps,mapActionsToProps)(Signup);
