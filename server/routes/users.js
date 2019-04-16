@@ -228,6 +228,27 @@ router.get(
   }
 );
 
+//FACEBOOK O AUTH
+router.get(
+  "/auth/facebook",
+  passport.authenticate("facebook", {
+    prompt: "select_account",
+    scope: "email",
+  }),
+);
+
+//@route GET api/auth/facebook/callback
+//@desc Facebook O Auth
+//@access Public
+router.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { session: true }),
+  (req, res) => {
+    console.log("Facebook callback route is called");
+    res.redirect("/dashboard");
+  },
+);
+
 // router.put("/", isLoggedIn, async (req, res) => {
 //   const userId = req.user._id;
 //   const data = {local:req.body};

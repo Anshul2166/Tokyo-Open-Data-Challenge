@@ -71,15 +71,16 @@ class Signup extends Component {
 
 const SocialNetworkLogIn = props => (
   <div className="social-network-login">
-    <Button
-      variant="contained"
-      color="primary"
-      className={props.classes.button}
-      onClick={() => alert("Please use google login for now")}
-    >
-      <FacebookIcon />
-      Signup with facebook
-    </Button>
+    <a href="api/users/auth/facebook">
+      <Button
+        variant="contained"
+        color="primary"
+        className={props.classes.button}
+      >
+        <FacebookIcon />
+        Signup with facebook
+      </Button>
+    </a>
     <a href="api/users/auth/google">
       <Button
         variant="contained"

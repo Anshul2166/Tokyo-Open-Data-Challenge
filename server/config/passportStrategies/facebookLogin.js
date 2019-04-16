@@ -8,7 +8,7 @@ module.exports = function(passport) {
         clientID: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
         profileFields: ["email", "displayName", "photos"],
-        callbackURL: "/api/user/auth/facebook/callback",
+        callbackURL: "/api/users/auth/facebook/callback",
         passReqToCallback: true,
         proxy: true,
       },
