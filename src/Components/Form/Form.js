@@ -7,10 +7,9 @@ class Form extends Component {
     daysOfTravel: ""
   };
 
-  handleLocations = event => {
-    this.setState({
-      locations: event.target.value
-    });
+  handleLocations = (event, index) => {
+    this.state.locations[index]=event.target.value
+    this.setState({locations: this.state.locations})
   };
   handleDays = event => {
     this.setState({
@@ -22,7 +21,7 @@ class Form extends Component {
     event.preventDefault();
   };
 
-  addLocation = event =>{
+  addLocation = ()=>{
     this.setState({
       locations:[...this.state.locations,'']
     })
@@ -38,17 +37,18 @@ class Form extends Component {
             <div>
               <label>Locations to visit</label>
 
-              {locations.map((location, index) => {
-                return (
-                  <div key={index}>
-                    <input 
-                    // eslint-disable-next-line no-restricted-globals
-                    type="number" placeholder='Enter location' value={location} onChange={this.addLocation} />
+              {
+                locations.map((location, index)=>{
+                  return(
+                    <div key={index}>
+                      <input type="text" placeholder='Enter location' value={location} onChange={(event)=>this.handleLocations(event, index)} />
                   </div>
-                );
-              })}
-                <hr></hr>
-              <button onClick={event => this.addLocation}>Add Location</button>
+                  )
+                })
+              }
+              
+                
+              <button onClick={event => this.addLocation(event)}>Add Location</button>
             </div>
             <div>
               <label>Days of Travel </label>
