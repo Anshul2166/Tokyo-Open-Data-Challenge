@@ -8,8 +8,8 @@ class Form extends Component {
   };
 
   handleLocations = (event, index) => {
-    this.state.locations[index]=event.target.value
-    this.setState({locations: this.state.locations})
+    this.state.locations[index] = event.target.value;
+    this.setState({ locations: this.state.locations });
   };
   handleDays = event => {
     this.setState({
@@ -19,13 +19,20 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state, "+");
   };
 
-  addLocation = ()=>{
+  addLocation = () => {
     this.setState({
-      locations:[...this.state.locations,'']
-    })
-  }
+      locations: [...this.state.locations, ""]
+    });
+  };
+
+  removeLocation = index => {
+    this.state.locations.splice(index, 1);
+    this.setState({ locations: this.state.locations });
+  };
+
   render() {
     const { locations, daysOfTravel } = this.state;
     return (
@@ -37,21 +44,28 @@ class Form extends Component {
             <div>
               <label>Locations to visit</label>
 
-              {
-                locations.map((location, index)=>{
-                  return(
-                    <div key={index}>
-                      <input type="text" placeholder='Enter location' value={location} onChange={(event)=>this.handleLocations(event, index)} />
+              {locations.map((location, index) => {
+                return (
+                  <div key={index}>
+                    <input
+                      type="text"
+                      placeholder="Enter location"
+                      value={location}
+                      onChange={event => this.handleLocations(event, index)}
+                    />
+                    <button id='remove' onClick={event => this.removeLocation(event)}>
+                      Remove
+                    </button>
                   </div>
-                  )
-                })
-              }
-              
-                
-              <button onClick={event => this.addLocation(event)}>Add Location</button>
+                );
+              })}
+
+              <button id='add' onClick={event => this.addLocation(event)}>
+                Add Location
+              </button>
             </div>
             <div>
-              <label>Days of Travel </label>
+              <label >Days of Travel </label>
               <input
                 type="number"
                 placeholder="Number of Days"
@@ -59,7 +73,9 @@ class Form extends Component {
                 onChange={this.handleDays}
               />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={event => this.handleSubmit(event)}>
+              Submit
+            </button>
           </div>
         </form>
       </div>
