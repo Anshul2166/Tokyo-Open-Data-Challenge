@@ -5,13 +5,13 @@ import { FormGroup, FormControl } from "@material-ui/core";
 import FacebookIcon from "mdi-react/FacebookIcon";
 import GoogleIcon from "mdi-react/GoogleIcon";
 import Typography from "@material-ui/core/Typography";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userActions from "../../../actions/userActions";
 
 class Signup extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, userActions } = this.props;
     return (
       <div className="border-box center-box">
         <Typography
@@ -64,35 +64,41 @@ class Signup extends Component {
             Signup with username
           </Button>
           <Divider />
-          <SocialNetworkLogIn classes={classes} />
+          <SocialNetworkLogIn
+            classes={classes}
+            facebookLogin={userActions.facebookLogin}
+            googleLogin={userActions.googleLogin}
+          />
         </div>
       </div>
     );
   }
 }
 
-const SocialNetworkLogIn = props => (
+const SocialNetworkLogIn = ({ facebookLogin, googleLogin, classes }) => (
   <div className="social-network-login">
     <a href="api/users/auth/facebook">
-      <Button
-        variant="contained"
-        color="primary"
-        className={props.classes.button}
-      >
-        <FacebookIcon />
-        Signup with facebook
-      </Button>
+    <Button
+      variant="contained"
+      color="primary"
+      className={classes.button}
+      // onClick={facebookLogin}
+    >
+      <FacebookIcon />
+      Signup with facebook
+    </Button>
     </a>
-    <a href="api/users/auth/google">
-      <Button
-        variant="contained"
-        color="primary"
-        className={props.classes.button}
-      >
-        <GoogleIcon />
-        Signup with google
-      </Button>
-    </a>
+    {/* <a href="api/users/auth/google"> */}
+    <Button
+      variant="contained"
+      color="primary"
+      className={classes.button}
+      onClick={googleLogin}
+    >
+      <GoogleIcon />
+      Signup with google
+    </Button>
+    {/* </a> */}
   </div>
 );
 
@@ -105,11 +111,11 @@ const Divider = props => (
   </div>
 );
 
-const mapStateToProps=state=>{
-	return{
-		users:state.users.users
-	}
-}
+const mapStateToProps = state => {
+  return {
+    users: state.users.users
+  };
+};
 
 const mapActionsToProps = dispatch => {
   return {
@@ -117,4 +123,7 @@ const mapActionsToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps,mapActionsToProps)(Signup);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Signup);

@@ -240,14 +240,42 @@ router.get(
 //@route GET api/auth/facebook/callback
 //@desc Facebook O Auth
 //@access Public
-router.get(
-  "/auth/facebook/callback",
-  passport.authenticate("facebook", { session: true }),
-  (req, res) => {
-    console.log("Facebook callback route is called");
-    res.redirect("/dashboard");
-  },
-);
+// router.get(
+//   "/auth/facebook/callback",
+//   passport.authenticate("facebook", { session: true }),
+//   (req, res) => {
+//     console.log("Facebook callback route is called");
+    
+//     res.redirect("/dashboard");
+//   },
+// );
+
+router.get("/auth/facebook/callback", function(req, res, next) {
+  passport.authenticate("facebook", function(err, user, info) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    if (user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log("error when logging in");
+          return next(err);
+        }
+        let message = info.message;
+        if (message) {
+          res.redirect("http://localhost:3000/dashboard");
+        } else {
+          res.redirect("http://localhost:3000/abcdef");
+        }
+        return;
+      });
+    } else {
+      res.redirect("http://localhost:3000/login");
+      return;
+    }
+  })(req, res, next);
+});
 
 // router.put("/", isLoggedIn, async (req, res) => {
 //   const userId = req.user._id;
