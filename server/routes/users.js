@@ -89,12 +89,14 @@ router.post("/login", loginValidations, async (req, res, next) => {
       errors.email = "User with provided email does not exist";
       return res.status(404).json(errors);
     }
-
+    console.log("Here before")
+    console.log(password);
     if (user.validPassword(password)) {
       //Everything goes right
 
       //Manually serializing user  in passport session
-      req.login(user, err => {
+      console.log("Here valid password");
+      req.logIn(user, err => {
         if (err) {
           return res.status(400).send("Oops some error occured");
         }
@@ -108,6 +110,7 @@ router.post("/login", loginValidations, async (req, res, next) => {
     }
   } catch (err) {
     console.log(err);
+    return res.status(400).json(err);
   }
 });
 

@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userActions from "../../../actions/userActions";
+import { withRouter } from "react-router-dom";
 
 class Signup extends Component {
   state = {
@@ -36,7 +37,11 @@ class Signup extends Component {
       password: password,
       email: email
     };
-    this.props.userActions.localSignup(credentials);
+    this.props.userActions.localSignup(credentials, this.redirectOnSuccess);
+  };
+
+  redirectOnSuccess = () => {
+    this.props.history.push("/dashboard");
   };
 
   render() {
@@ -146,4 +151,4 @@ const mapActionsToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(Signup);
+)(withRouter(Signup));

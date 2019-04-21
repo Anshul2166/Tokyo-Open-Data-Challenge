@@ -38,7 +38,7 @@ class User extends Component {
     const { classes } = this.props;
     return (
       <div className="user">
-          <Signup classes={classes} />
+          <Login classes={classes} />
       </div>
     );
   }
