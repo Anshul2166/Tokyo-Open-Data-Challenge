@@ -23,8 +23,8 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     width: 250,
-    textTransform:"unset",
-    fontSize:"1rem"
+    textTransform: "unset",
+    fontSize: "1rem"
   }
 });
 
@@ -37,13 +37,14 @@ class User extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="user">
+      <div>
+        
+        <div className="user">
           <Login classes={classes} />
+        </div>
       </div>
     );
   }
 }
-
-
 
 export default withStyles(styles)(User);
