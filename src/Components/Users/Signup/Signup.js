@@ -10,8 +10,38 @@ import { bindActionCreators } from "redux";
 import * as userActions from "../../../actions/userActions";
 
 class Signup extends Component {
+  state = {
+    username: "",
+    password: "",
+    email: ""
+  };
+
+  changeUsername = event => {
+    this.setState({ username: event.target.value });
+  };
+
+  changePassword = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  changeEmail = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  submitSignupForm = e => {
+    console.log("Method called");
+    let { username, password, email } = this.state;
+    let credentials = {
+      username: username,
+      password: password,
+      email: email
+    };
+    this.props.userActions.localSignup(credentials);
+  };
+
   render() {
-    const { classes, userActions } = this.props;
+    const { classes } = this.props;
+    let { username, password, email } = this.state;
     return (
       <div className="border-box center-box">
         <Typography
@@ -29,8 +59,9 @@ class Signup extends Component {
                   required
                   id="standard-required"
                   label="Username"
-                  margin="small"
                   className={classes.textField + " textfield"}
+                  value={username}
+                  onChange={e => this.changeUsername(e)}
                 />
               </FormControl>
               <FormControl>
@@ -41,7 +72,8 @@ class Signup extends Component {
                   className={classes.textField + " textfield"}
                   type="password"
                   autoComplete="current-password"
-                  margin="small"
+                  value={password}
+                  onChange={e => this.changePassword(e)}
                 />
               </FormControl>
               <FormControl>
@@ -51,7 +83,8 @@ class Signup extends Component {
                   className={classes.textField + " textfield"}
                   type="email"
                   autoComplete="email"
-                  margin="small"
+                  value={email}
+                  onChange={e => this.changeEmail(e)}
                 />
               </FormControl>
             </FormGroup>
@@ -60,15 +93,12 @@ class Signup extends Component {
             variant="contained"
             color="primary"
             className={classes.button}
+            onClick={this.submitSignupForm}
           >
             Signup with username
           </Button>
           <Divider />
-          <SocialNetworkLogIn
-            classes={classes}
-            facebookLogin={userActions.facebookLogin}
-            googleLogin={userActions.googleLogin}
-          />
+          <SocialNetworkLogIn classes={classes} />
         </div>
       </div>
     );
@@ -78,27 +108,17 @@ class Signup extends Component {
 const SocialNetworkLogIn = ({ facebookLogin, googleLogin, classes }) => (
   <div className="social-network-login">
     <a href="api/users/auth/facebook">
-    <Button
-      variant="contained"
-      color="primary"
-      className={classes.button}
-      // onClick={facebookLogin}
-    >
-      <FacebookIcon />
-      Signup with facebook
-    </Button>
+      <Button variant="contained" color="primary" className={classes.button}>
+        <FacebookIcon />
+        Signup with facebook
+      </Button>
     </a>
-    {/* <a href="api/users/auth/google"> */}
-    <Button
-      variant="contained"
-      color="primary"
-      className={classes.button}
-      onClick={googleLogin}
-    >
-      <GoogleIcon />
-      Signup with google
-    </Button>
-    {/* </a> */}
+    <a href="api/users/auth/google">
+      <Button variant="contained" color="primary" className={classes.button}>
+        <GoogleIcon />
+        Signup with google
+      </Button>
+    </a>
   </div>
 );
 

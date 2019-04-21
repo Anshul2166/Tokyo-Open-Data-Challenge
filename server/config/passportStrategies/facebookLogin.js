@@ -13,6 +13,7 @@ module.exports = function(passport) {
         proxy: true,
       },
       async (req, token, refreshToken, profile, done) => {
+        console.log("Here");
         try {
           const user = await User.findOne({ facebook: profile.id });
           if (user) {

@@ -16,13 +16,18 @@ let loginValidations = [
 let signUpValidation = [
   check("email").isEmail(),
   check("password").isLength({ min: 5 }),
-  check("name").isLength({ min: 5, max: 15 })
+  check("username").isLength({ min: 5, max: 15 })
 ];
 
 let changePasswordValidation = [
   check("password").isLength({ min: 5 }),
   check("oldPassword").isLength({ min: 5 })
 ];
+
+router.all("/auth/facebook",function(req,res,next){
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+});
 
 //function to check if the user is already logged in or not
 function isLoggedIn(req, res, next) {
@@ -110,6 +115,7 @@ router.post("/login", loginValidations, async (req, res, next) => {
 router.post("/signup", signUpValidation, async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    console.log(errors);
     return res.status(422).json({ errors: errors.array() });
   }
   console.log("Here");
@@ -214,10 +220,10 @@ router.get("/logout", async (req, res) => {
 //   })
 // );
 
-router.get('/auth/google',
-  passport.authenticate('google', { scope:
-  	[ 'email', 'profile' ] }
-));
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
 
 router.get(
   "/auth/google/callback",
@@ -233,49 +239,45 @@ router.get(
   "/auth/facebook",
   passport.authenticate("facebook", {
     prompt: "select_account",
-    scope: "email",
-  }),
+    scope: "email"
+  })
 );
 
 //@route GET api/auth/facebook/callback
 //@desc Facebook O Auth
 //@access Public
-// router.get(
-//   "/auth/facebook/callback",
-//   passport.authenticate("facebook", { session: true }),
-//   (req, res) => {
-//     console.log("Facebook callback route is called");
-    
-//     res.redirect("/dashboard");
-//   },
-// );
+router.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { session: true }),
+  (req, res) => {
+    console.log("Facebook callback route is called");
 
-router.get("/auth/facebook/callback", function(req, res, next) {
-  passport.authenticate("facebook", function(err, user, info) {
-    if (err) {
-      console.log(err);
-      return next(err);
-    }
-    if (user) {
-      req.logIn(user, function(err) {
-        if (err) {
-          console.log("error when logging in");
-          return next(err);
-        }
-        let message = info.message;
-        if (message) {
-          res.redirect("http://localhost:3000/dashboard");
-        } else {
-          res.redirect("http://localhost:3000/abcdef");
-        }
-        return;
-      });
-    } else {
-      res.redirect("http://localhost:3000/login");
-      return;
-    }
-  })(req, res, next);
-});
+    res.redirect("/dashboard");
+  },
+);
+
+// router.get("/auth/facebook/callback", function(req, res, next) {
+//   passport.authenticate("facebook", function(err, user, info) {
+//     if (err) {
+//       console.log(err);
+//       return next(err);
+//     }
+//     if (user) {
+//       req.logIn(user, function(err) {
+//         if (err) {
+//           console.log("error when logging in");
+//           return next(err);
+//         }
+//         res.status(200);
+//         res.redirect("http://localhost:3000/dashboard");
+//         return;
+//       });
+//     } else {
+//       res.redirect("http://localhost:3000/login");
+//       return;
+//     }
+//   })(req, res, next);
+// });
 
 // router.put("/", isLoggedIn, async (req, res) => {
 //   const userId = req.user._id;

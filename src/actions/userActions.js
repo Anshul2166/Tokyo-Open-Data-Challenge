@@ -1,34 +1,38 @@
 import * as ACTIONS from "./actionTypes";
 const axios = require("axios");
 
-export async function facebookLogin() {
+export const localSignup = (credentials) => async dispatch => {
   try {
-    const response = await axios.get("/api/users/auth/facebook");
-    if (response.data.status === 200) {
-      successLogin(response);
+    console.log("User action=localsignup");
+    const response = await axios.post("http://localhost:8080/api/users/signup",credentials,{withCredentials:true});
+    console.log("Done with response");
+    console.log(response);
+    if (response.status === 200) {
+      console.log("Here is the 200 status");
+      successLogin(dispatch, response);
     } else {
-      failedLogin();
+      failedLogin(dispatch);
     }
   } catch (err) {
-    errorLogin();
+    errorLogin(dispatch);
   }
+};
+
+export function successLogin(dispatch, response) {
+  dispatch({
+    type: ACTIONS.LOGIN_SUCCESS,
+    payload: response
+  });
 }
 
-export function successLogin(response){
-  return{
-    type:ACTIONS.LOGIN_SUCCESS,
-    payload:response
-  }
+export function failedLogin(dispatch) {
+  dispatch({
+    type: ACTIONS.LOGIN_FAILURE
+  });
 }
 
-export function failedLogin(){
-  return{
-    type:ACTIONS.LOGIN_FAILURE
-  }
-}
-
-export function errorLogin(){
-  return{
-    type:ACTIONS.LOGIN_ERROR
-  }
+export function errorLogin(dispatch) {
+  dispatch({
+    type: ACTIONS.LOGIN_ERROR
+  });
 }
