@@ -80,6 +80,21 @@ li svg {
 	margin-right: auto;
 	border: 2px solid gray;
 	border-radius: 1.5%;
-  margin-top: 5%;
-  margin-bottom: 2.5%;
+	margin-top: 5%;
+	margin-bottom: 2.5%;
+}
+.user .MuiButton-contained-162.MuiButton-disabled-171 {
+	background-color: #3f51b5;
+	opacity: 0.65;
+	color: white;
+}
+
+.user .MuiButtonBase-root-55.MuiButtonBase-disabled-56 {
+	pointer-events: all !important;
+	cursor: not-allowed !important;
+}
+.user .MuiButtonBase-root-55.MuiButtonBase-disabled-56:hover {
+	background-color: #3f51b5;
+	opacity: 0.45;
+	color: white;
 }
