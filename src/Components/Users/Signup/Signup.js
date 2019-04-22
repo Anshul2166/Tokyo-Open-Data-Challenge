@@ -50,7 +50,7 @@ class Signup extends Component {
     return (
       <div className="border-box center-box">
         <Typography
-          variant="display1"
+          variant="headline"
           component="h1"
           className="form-center center-text"
         >

@@ -45,8 +45,8 @@ class Login extends Component {
     return (
       <div className="border-box center-box">
         <Typography
-          variant="display1"
-          component="h1"
+          variant="headline"
+          component="h3"
           className="form-center center-text"
         >
           <b className="heading-form">Login to the app</b>
