@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ToastContainer autoClose={112000} />
+        <ToastContainer autoClose={2000} />
         <Switch>
           <Route exact path="/" component={Users} />
           <Route exact path="/form" component={Form} />
