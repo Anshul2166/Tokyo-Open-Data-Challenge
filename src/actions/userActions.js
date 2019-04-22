@@ -52,12 +52,11 @@ export const localLogin = (
 };
 
 export function successLogin(dispatch, response, redirectOnSuccess) {
- 
   dispatch({
     type: ACTIONS.LOGIN_SUCCESS,
     payload: response
   });
-  // redirectOnSuccess();
+  redirectOnSuccess();
 }
 
 export function failedLogin(dispatch, response) {
