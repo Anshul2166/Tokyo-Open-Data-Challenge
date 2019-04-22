@@ -1,73 +1,73 @@
-.Head{
-    background:#10A881;
-    color: #fff;
-    text-align: left;
-    padding: 2%;
-    margin-top: 0;
-    
+.Head {
+  background: #10a881;
+  color: #fff;
+  text-align: left;
+  padding: 2%;
+  margin-top: 0;
 }
 
-.Outer{
-    display: inline-block;
-		width: 25%;
-		padding: 0 1em;
-		line-height: 50px;
-		background-color: white;	
-		border: solid 1px #A4B0BD;
-		border-bottom-width: 3px;
-		border-radius: 5px;
-		transition: all 0.4s ease;
-        outline: none; 
-        margin: auto;
-}
-.Title{
-    padding: 0.5em;
-	margin: 0 0 20px;
-	border-bottom: dashed 1px #A4B0BD;
-    text-align: center;
-    
-}
-*{
-    font-family: Helvetica, Arial, sans-serif;
+.Outer {
+  display: inline-block;
+  width: 25%;
+  padding: 0 1em;
+  line-height: 50px;
+  background-color: white;
+  border: solid 1px #a4b0bd;
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+  outline: none;
+  margin: auto;
 }
 
-div{
-    text-align: center;
+.Title {
+  padding: 0.5em;
+  margin: 0 0 20px;
+  border-bottom: dashed 1px #a4b0bd;
+  text-align: center;
 }
 
-label{
-    font-size: 1em;
-    padding: 1%;
-    
+* {
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-input{
-    padding: 0.5em;
-}
-button{
-    background: #1BCA9B;
-    padding: 0.3em;
-    margin: 1em;    
-    width: 6em;
-    font-size: 1em;
-}
-button:active{
-   background: #10A881;
-} 
-
-#add{
-    background: #1BCA9B;
-    padding: 0.3em;
-    margin: 1.5em;    
-    width: 7em;
-    font-size: 0.8em;   
+div {
+  text-align: center;
 }
 
-#remove{
-    background: #1BCA9B;
-    padding: 0.2em;
-    margin: 1.5em;    
-    width: 4.5em;
-    font-size: 0.8em;   
+label {
+  font-size: 1em;
+  padding: 1%;
 }
 
+input {
+  padding: 0.5em;
+}
+
+.button {
+  background: #1bca9b;
+  padding: 0.3em;
+  margin: 1em;
+  width: 6em;
+  font-size: 1em;
+}
+
+button:active {
+  background: #10a881;
+}
+
+#add {
+  background: #1bca9b;
+  padding: 0.3em;
+  margin: 1.5em;
+  width: 7em;
+  font-size: 0.8em;
+}
+
+#remove {
+  background: #1bca9b;
+  padding: 0.2em;
+  margin: 1.5em;
+  width: 4.5em;
+  font-size: 0.8em;
+}

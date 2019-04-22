@@ -53,14 +53,14 @@ class Form extends Component {
                       value={location}
                       onChange={event => this.handleLocations(event, index)}
                     />
-                    <button id='remove' onClick={event => this.removeLocation(event)}>
+                    <button id='remove' className='button' onClick={event => this.removeLocation(event)}>
                       Remove
                     </button>
                   </div>
                 );
               })}
 
-              <button id='add' onClick={event => this.addLocation(event)}>
+              <button id='add' className='button' onClick={event => this.addLocation(event)}>
                 Add Location
               </button>
             </div>
@@ -73,7 +73,7 @@ class Form extends Component {
                 onChange={this.handleDays}
               />
             </div>
-            <button type="submit" onClick={event => this.handleSubmit(event)}>
+            <button type="submit" className='button' onClick={event => this.handleSubmit(event)}>
               Submit
             </button>
           </div>
