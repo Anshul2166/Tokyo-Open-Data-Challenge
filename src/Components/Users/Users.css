@@ -75,7 +75,7 @@ li svg {
 }
 .user {
 	overflow: hidden;
-	width: 400px;
+	max-width:400px;
 	margin-left: auto;
 	margin-right: auto;
 	border: 2px solid gray;
@@ -83,6 +83,23 @@ li svg {
 	margin-top: 5%;
 	margin-bottom: 2.5%;
 }
+
+.signup-link-text{
+	display: none;
+}
+
+@media only screen and (max-width: 600px) {
+	.user{
+		border: 0px;
+	}
+	.tabs-login-signup{
+		display: none;
+	}
+	.signup-link-text{
+		display: block;
+	}
+
+} 
 .user .MuiButton-contained-162.MuiButton-disabled-171 {
 	background-color: #3f51b5;
 	opacity: 0.65;

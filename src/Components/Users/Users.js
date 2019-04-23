@@ -8,10 +8,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import { Grid } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
 	root: {
-    flexGrow: 1
+		flexGrow: 1,
 	},
 	container: {
 		display: 'flex',
@@ -36,33 +38,43 @@ const styles = theme => ({
 	},
 });
 
-
 function TabContainer(props) {
-  return (
-    <Typography component="div">
-      {props.children}
-    </Typography>
-  );
+	return <Typography component="div">{props.children}</Typography>;
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired,
 };
 
 class User extends Component {
 	state = {
 		value: 0,
+		switchText: 'Signup instead?',
+	};
+
+	changeValue = () => {
+		let { value } = this.state;
+		let switchText = '';
+		if (value === 0) {
+			value = 1;
+			switchText = 'Login instead?';
+		} else {
+			value = 0;
+			switchText = 'Signup instead?';
+		}
+		this.setState({ value, switchText });
 	};
 
 	handleChange = (event, value) => {
 		this.setState({ value });
 	};
+
 	render() {
-    const { classes } = this.props;
-    const { value } = this.state;
+		const { classes } = this.props;
+		const { value, switchText } = this.state;
 		return (
 			<div className="user">
-				<Paper className={classes.root}>
+				<Paper className={classes.root + ' tabs-login-signup'}>
 					<Tabs
 						value={this.state.value}
 						onChange={this.handleChange}
@@ -74,8 +86,19 @@ class User extends Component {
 						<Tab label="Signup" />
 					</Tabs>
 				</Paper>
-        {value === 0 && <TabContainer><Login classes={classes} /></TabContainer>}
-        {value === 1 && <TabContainer><Signup classes={classes} /></TabContainer>}
+				{value === 0 && (
+					<TabContainer>
+						<Login classes={classes} />
+					</TabContainer>
+				)}
+				{value === 1 && (
+					<TabContainer>
+						<Signup classes={classes} />
+					</TabContainer>
+				)}
+				<div className="signup-link-text center-text">
+					<Link onClick={this.changeValue}>{switchText}</Link>
+				</div>
 			</div>
 		);
 	}
