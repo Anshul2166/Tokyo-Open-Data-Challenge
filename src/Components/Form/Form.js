@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Form.css";
+import autocomplete from "./autocomplete";
+
 
 class Form extends Component {
   state = {
@@ -38,16 +40,17 @@ class Form extends Component {
     return (
       <div>
         <h1 className="Head"> Tokyo Open Data Challenge</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form autocomplete="pff" onSubmit={this.handleSubmit}>
           <div className="Outer">
             <h3 className="Title">Enter Tour Details</h3>
             <div>
               <label>Locations to visit</label>
-
+              
               {locations.map((location, index) => {
                 return (
                   <div key={index}>
                     <input
+                      id='myInput'
                       type="text"
                       placeholder="Enter location"
                       value={location}
