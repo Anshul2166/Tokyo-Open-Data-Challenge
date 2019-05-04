@@ -13,6 +13,8 @@ var userSchema = mongoose.Schema({
     },
     email: String
   },
+  facebook: { type: String, sparse: true },
+  fbTokens: Array,
   google: { type: String, sparse: true }
 });
 
