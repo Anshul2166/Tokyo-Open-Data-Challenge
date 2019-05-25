@@ -1,6 +1,17 @@
 from flask import Flask, redirect, url_for
 from routes.users import index_blueprint
+import event_search
+from flask_script import Manager
+import configparser
+
 app = Flask(__name__)
+manager = Manager(app)
+
+# def get_keys():
+#    config = configparser.ConfigParser()
+#    config.read("./config/keys.txt")
+#    eventful_api_key==config.get("configuration","eventful_api_key")
+#    return eventful_api_key
 
 @app.route('/flask')
 def hello_flask():
@@ -18,14 +29,19 @@ def hello_admin():
 def hello_guest(guest):
    return 'Hello %s as Guest' % guest
 
-@app.route('/user/<name>')
-def hello_user(name):
-   if name =='admin':
-      return redirect(url_for('hello_admin'))
-   else:
-      return redirect(url_for('hello_guest',guest = name))
+@app.route('/get-event')
+def get_event():
+   # eventful_api_key=get_keys()
+   # print(eventful_api_key)
+   config = configparser.ConfigParser()
+   config.read("./config/keys.txt")
+   eventful_api_key=config.get("configuration","eventful_api_key")
+   print(eventful_api_key)
+   res=event_search.main('tokyo','20190601','20190630',eventful_api_key);
+   print(res)
+   return "Done";
 
 app.register_blueprint(index_blueprint)
 
 if __name__ == '__main__':
-   app.run()
+	manager.run()
