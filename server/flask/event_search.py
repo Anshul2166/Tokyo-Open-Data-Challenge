@@ -18,7 +18,6 @@ import argparse
 # parser.add_argument("end_date", type = str, help = "assign event end date <yyyymmdd>, such as 20150131")
 # args = parser.parse_args()
 
-
 def get_event(user_key, event_location, start_date, end_date, event_features, fname):
 	'''
 	Description:
@@ -156,4 +155,4 @@ def main(event_location,start_date,end_date,user_key):
 
 
 if __name__ == '__main__':
-    main()
+    res=main("tokyo","20190601","20190630","nvm34KtGGHhNWmVW")

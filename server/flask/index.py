@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for,jsonify
 from routes.users import index_blueprint
 import event_search
 from flask_script import Manager
@@ -39,7 +39,7 @@ def get_event():
    print(eventful_api_key)
    res=event_search.main('tokyo','20190601','20190630',eventful_api_key);
    print(res)
-   return "Done";
+   return jsonify(res)
 
 app.register_blueprint(index_blueprint)
 
