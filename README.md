@@ -10,7 +10,7 @@
 ```npm run start-dev```
 
 
-## Authors : 
+### Authors : 
 * [Anshul Dubey](https://github.com/Anshul2166)
 * [Akash Dash](https://github.com/akashDash458)
 * [Kundan Dewangan](https://github.com/kundandewangan)
