@@ -18,7 +18,7 @@
     "file-loader": "^3.0.1",
     "http-proxy-middleware": "^0.19.1",
     "mdi-react": "^5.3.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.5.0",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
